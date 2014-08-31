@@ -1,5 +1,6 @@
 *{margin: 0;padding: 0;}
 .f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+body{background: #B24926;color: #FFF;}
 
 .g-bd{padding: 2%;}
 
@@ -12,7 +13,8 @@
 .m-vlist{margin-left: 20px;}
 .m-vlist li{float: left;list-style: none;}
 
-.m-video{text-align: center;margin-top: 50px;}
-.m-video video{width: 100%;}
+.m-video{text-align: center;max-width: 1000px;margin: 50px auto;position: relative;}
+.m-video .container{padding: 20px;}
+.m-video video{width: 100%;height: auto;}
 
 .u-blka{display:block;width: 200px;height: 30px;background: #eee;text-decoration: none;text-align: center;line-height:30px;font-weight: bold;color: #4770D2;margin-right: 10px;}

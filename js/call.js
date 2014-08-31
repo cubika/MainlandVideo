@@ -3,6 +3,10 @@
 		list = $("#videoList"),
 		container = $("#result-container");
 
+		$("#video-container").resizable({
+			aspectRatio: 89/50
+		}).draggable();
+
 	$.get('data/src.json', function(data) {
 		for(var key in data) {
 			container.append($("<a href class='u-blka' data-plid=" + data[key] + ">" + key + "</a>"));
@@ -17,10 +21,11 @@
 			// 获取vid
 			$.getJSON('http://pl.hd.sohu.com/videolist?playlistid=' + plid + '&pagesize=999&callback=?', function(ret) {
 				var videos = ret.videos,
-					ul = $('<ul>').appendTo(list.empty()).addClass('f-cb');
+					ul = $('<ul>').addClass('f-cb');
 				$.each(videos, function(index, video) {
 					ul.append("<li><a href class='u-blka' data-vid='" + video.vid + "'>" + video.showName + "</a></li>"); 
 				});
+				ul.appendTo(list.empty()).hide().fadeIn('slow');
 			});
 		}else if(vid) {
 			$.getJSON('http://api.tv.sohu.com/video/playinfo/' + vid + '.json?api_key=f351515304020cad28c92f70f002261c&callback=?', function(ret) {

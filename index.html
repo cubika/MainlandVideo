@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Demo</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,13 +21,16 @@
 			
 		</div>
 		<div class="m-video">
-			<video src="" id="video" controls autoplay="true" width="848" height="480">
-				您的浏览器不支持 video 标签。
-			</video>
+			<div class="ui-widget-content container" id="video-container">
+				<video src="" id="video" controls autoplay="true">
+					您的浏览器不支持 video 标签。
+				</video>
+			</div>
 		</div>
 	</div>
 	
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script src="//upcdn.b0.upaiyun.com/libs/jqueryui/jquery.ui-1.10.3.min.js"></script>
 	<script src="js/call.js"></script>
 </body>
 </html>
