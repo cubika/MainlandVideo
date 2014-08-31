@@ -1,0 +1,18 @@
+*{margin: 0;padding: 0;}
+.f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+
+.g-bd{padding: 2%;}
+
+.m-search{text-align: center;}
+.m-search input{width: 300px;height: 30px;line-height: 30px;}
+
+.m-result{padding: 10px;margin: 30px 10px;}
+.m-result a{float: left;}
+
+.m-vlist{margin-left: 20px;}
+.m-vlist li{float: left;list-style: none;}
+
+.m-video{text-align: center;margin-top: 50px;}
+.m-video video{width: 100%;}
+
+.u-blka{display:block;width: 200px;height: 30px;background: #eee;text-decoration: none;text-align: center;line-height:30px;font-weight: bold;color: #4770D2;margin-right: 10px;}

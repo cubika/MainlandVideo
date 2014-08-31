@@ -3,14 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Demo</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-	<a href="" data-plid="6936497">济公活佛</a>
-
-	<video src="" id="video" controls autoplay="true">
-		您的浏览器不支持 video 标签。
-	</video>
+	<div class="g-hd">
+		
+	</div>
+	<div class="g-bd">
+		<div class="m-search">
+			搜索： <input type="search" id="search">
+		</div>
+		<div class="m-result f-cb" id="result-container">
+			
+		</div>
+		<div class="m-vlist" id="videoList">
+			
+		</div>
+		<div class="m-video">
+			<video src="" id="video" controls autoplay="true" width="848" height="480">
+				您的浏览器不支持 video 标签。
+			</video>
+		</div>
+	</div>
+	
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
 	<script src="js/call.js"></script>
 </body>
