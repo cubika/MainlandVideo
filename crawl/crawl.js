@@ -11,7 +11,7 @@ function parseLinks(type, window) {
 		var a = $(this).find('a')[0],
 			img = $(a).find("img")[0];
 
-		var plid = $(a).attr('_s_v'),
+		var plid = $(a).attr('_s_a'),
 			title = img.title;
 		result[title] = plid;
 	});

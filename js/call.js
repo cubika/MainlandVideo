@@ -13,7 +13,7 @@
 		}
 	});
 
-	$(document).on('click', 'a', function() {
+	$('#content').on('click', 'a', function() {
 		var self = this, 
 			plid = $(this).data('plid'),
 			vid = $(this).data('vid');
@@ -28,16 +28,12 @@
 				ul.appendTo(list.empty()).hide().fadeIn('slow');
 			});
 		}else if(vid) {
+			// 获取src
 			$.getJSON('http://api.tv.sohu.com/video/playinfo/' + vid + '.json?api_key=f351515304020cad28c92f70f002261c&callback=?', function(ret) {
 				var urls = ret.data.url_super_mp4.split(','),
 					current = 0;
 				video.attr('src', urls[current]);
-				/* video.on('loadedmetadata', function(e) {
-					var videoObject = e.target;
-					var percentWidth = videoObject.clientWidth * 100 / videoObject.videoWidth;
-					var videoHeight = videoObject.videoHeight * percentWidth / 100;
-					video.height(videoHeight);
-				}); */
+
 				video.on('ended', function() {
 					if(current == urls.length) return;
 					video.attr('src', urls[++current]);
@@ -46,6 +42,18 @@
 				});
 			});
 		}
+		return false;
+	});
+
+	$("#nav a").on('click', function() {
+		var type = $(this).data('type');
+		container.empty();
+		list.empty();
+		$.get('data/'+ type +'.json', function(data) {
+			for(var key in data) {
+				container.append($("<a href class='u-blka' data-plid=" + data[key] + ">" + key + "</a>"));
+			}
+		});
 		return false;
 	});
 

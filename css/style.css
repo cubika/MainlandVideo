@@ -2,7 +2,13 @@
 .f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
 body{background: #B24926;color: #FFF;}
 
+.g-hd{height: 40px;}
 .g-bd{padding: 2%;}
+
+.m-nav{height: 37px;line-height: 37px;background: #6ba7b7; position: fixed;width: 100%;left: 0; top: 0;}
+.m-nav li{position: relative;float: left;list-style: none;height: 35px;}
+.m-nav li a{padding: 0 20px;font-weight: bold;font-size: 18px;color: #EFEFEF;text-decoration: none;border-right: 1px solid #C8C8C8;}
+.m-nav li a:hover{color: #3B539A;}
 
 .m-search{text-align: center;}
 .m-search input{width: 300px;height: 30px;line-height: 30px;}
@@ -11,11 +17,11 @@ body{background: #B24926;color: #FFF;}
 .m-result a{float: left;}
 
 .m-vlist{margin-left: 20px;}
-.m-vlist li{float: left;list-style: none;margin: 5px;}
+.m-vlist li{float: left;list-style: none;}
 
 .m-video{text-align: center;max-width: 1000px;margin: 50px auto;position: relative;}
 .m-video .container{padding: 20px;box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);}
 .m-video video{width: 100%;height: auto;}
 
-.u-blka{display:block;width: 160px;height: 30px;background: #eee;text-decoration: none;text-align: center;line-height:30px;font-weight: bold;color: #4770D2;margin-right: 10px;box-shadow: 2px 4px 6px black;border-radius: 10px;}
+.u-blka{margin: 5px;display:block;width: 160px;height: 30px;background: #eee;text-decoration: none;text-align: center;line-height:30px;font-weight: bold;color: #4770D2;margin-right: 10px;box-shadow: 2px 4px 6px black;border-radius: 10px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .u-blka:hover{background: #FAE6D6;color: #1B9499;}
