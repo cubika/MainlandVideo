@@ -2,13 +2,18 @@
 .f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
 body{background: #B24926;color: #FFF;}
 
-.g-hd{height: 40px;}
-.g-bd{padding: 2%;}
+.g-hd{height: 40px;background: #6ba7b7; position: fixed;width: 100%;left: 0; top: 0;z-index: 10;}
+.g-bd{padding: 70px 2%;}
 
-.m-nav{height: 37px;line-height: 37px;background: #6ba7b7; position: fixed;width: 100%;left: 0; top: 0;}
+.m-nav{height: 37px;line-height: 37px;float: left;}
 .m-nav li{position: relative;float: left;list-style: none;height: 35px;}
 .m-nav li a{padding: 0 20px;font-weight: bold;font-size: 18px;color: #EFEFEF;text-decoration: none;border-right: 1px solid #C8C8C8;}
 .m-nav li a:hover{color: #3B539A;}
+
+.m-refresh{float: right;height: 37px;line-height: 37px;margin-right: 40px;}
+.m-refresh span, .m-refresh img{vertical-align: middle;}
+.m-refresh img{cursor: pointer;transition:all 1s;-webkit-transition: all 1s;}
+.m-refresh .rotate{transform: rotate(360deg); -webkit-transform: rotate(360deg);}
 
 .m-search{text-align: center;}
 .m-search input{width: 300px;height: 30px;line-height: 30px;}

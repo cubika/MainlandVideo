@@ -57,4 +57,7 @@
 		return false;
 	});
 
+	$("#refresh").on('click', function() {
+		$(this).css('transform', 'rotate(360deg)');
+	});
 })()
