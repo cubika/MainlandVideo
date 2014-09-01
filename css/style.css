@@ -30,3 +30,12 @@ body{background: #B24926;color: #FFF;}
 
 .u-blka{margin: 5px;display:block;width: 160px;height: 30px;background: #eee;text-decoration: none;text-align: center;line-height:30px;font-weight: bold;color: #4770D2;margin-right: 10px;box-shadow: 2px 4px 6px black;border-radius: 10px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .u-blka:hover{background: #FAE6D6;color: #1B9499;}
+
+@media screen and (max-width: 700px) {
+	.g-bd{padding: 70px 20px;}
+	.m-nav li a{font-size: 14px;padding: 0 10px;}
+	.m-refresh{font-size: 14px; margin-right: 20px;}
+	.m-search input{width: 60%;}
+	.u-blka{width: 120px;}
+	.m-video .container{padding: 12px;}
+}
