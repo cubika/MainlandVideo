@@ -1,12 +1,25 @@
 (function() {
 	var video = $("#video"),
+		current = 0, limit = 20,
+		currentType,
 		list = $("#videoList"),
 		container = $("#result-container");
 
-		$("#video-container").resizable({
-			aspectRatio: 89/50
-		}).draggable();
+	$("#video-container").resizable({
+		aspectRatio: 89/50
+	}).draggable();
 
+	function appendTV() {
+		container.empty();
+		list.empty();
+		$.get('data/'+ currentType +'.json', function(data) {
+			var keys = Object.keys(data);
+			for(i=current; i<keys.length && i<current+limit; i++) {
+				container.append($("<a href class='u-blka' data-plid=" + data[keys[i]] + ">" + keys[i] + "</a>"));
+			}
+			current += limit;
+		});
+	}
 	$.get('data/src.json', function(data) {
 		for(var key in data) {
 			container.append($("<a href class='u-blka' data-plid=" + data[key] + ">" + key + "</a>"));
@@ -30,13 +43,13 @@
 		}else if(vid) {
 			// 获取src
 			$.getJSON('http://api.tv.sohu.com/video/playinfo/' + vid + '.json?api_key=f351515304020cad28c92f70f002261c&callback=?', function(ret) {
-				var urls = ret.data.url_super_mp4.split(','),
-					current = 0;
-				video.attr('src', urls[current]);
+				var urls = (ret.data.url_super_mp4 || ret.data.url_high_mp4).split(','),
+					index = 0;
+				video.attr('src', urls[index]);
 
 				video.on('ended', function() {
-					if(current == urls.length) return;
-					video.attr('src', urls[++current]);
+					if(index == urls.length) return;
+					video.attr('src', urls[++index]);
 					video[0].load();
 					video[0].play();
 				});
@@ -47,17 +60,15 @@
 
 	$("#nav a").on('click', function() {
 		var type = $(this).data('type');
-		container.empty();
-		list.empty();
-		$.get('data/'+ type +'.json', function(data) {
-			for(var key in data) {
-				container.append($("<a href class='u-blka' data-plid=" + data[key] + ">" + key + "</a>"));
-			}
-		});
+		currentType = type;
+		current = 0,
+		appendTV();
 		return false;
 	});
 
 	$("#refresh").on('click', function() {
 		$(this).css('transform', 'rotate(360deg)');
+		appendTV();
+		return false;
 	});
 })()
