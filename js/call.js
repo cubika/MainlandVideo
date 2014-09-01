@@ -13,7 +13,7 @@
 	}).draggable();
 
 	var jxhr = [];
-	$.each(['src', 'neidi', 'gangju', 'meiju', 'hanju'], function(index, type){
+	$.each(['src', 'neidi', 'gangju', 'meiju', 'hanju', "movie", "comic"], function(index, type){
 		jxhr.push($.getJSON('data/' + type + '.json', function(result) {
 			typeMap[type] = result;
 			$.extend(idMap, result);
