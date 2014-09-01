@@ -1,6 +1,7 @@
 *{margin: 0;padding: 0;}
 .f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
 body{background: #B24926;color: #FFF;}
+.ui-state-disabled{opacity: 1;}
 
 .g-hd{height: 40px;background: #6ba7b7; position: fixed;width: 100%;left: 0; top: 0;z-index: 10;}
 .g-bd{padding: 70px 2%;}

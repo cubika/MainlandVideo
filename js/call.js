@@ -96,4 +96,18 @@
 		appendTV();
 		return false;
 	});
+
+	video.on('mousedown', function (e) {
+    var wrapper = $('#video-container'),
+        rect = wrapper[0].getBoundingClientRect(),
+        y = e.clientY - rect.top;
+	    if (y > video.height() - 40) {
+	        wrapper.draggable('disable');
+	    }
+	});
+
+	video.on('mouseup', function (e) {
+	    $('#video-container').draggable('enable');
+	});
+
 })()
