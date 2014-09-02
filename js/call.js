@@ -132,16 +132,20 @@
 	    }
 	  }
 	}
-	
+
 	var listener = new window.keypress.Listener();
 	listener.simple_combo("enter", function() {
 		toggleFullScreen(video[0]);
 	});
 	listener.simple_combo("up", function() {
-		video[0].volume += 0.1;
+		if(video[0].volume <= 0.9) {
+			video[0].volume += 0.1;
+		}
 	});
 	listener.simple_combo("down", function() {
-		video[0].volume -= 0.1;
+		if(video[0].volume >= 0.1) {
+			video[0].volume -= 0.1;
+		}
 	});
 	listener.simple_combo("left", function() {
 		video[0].currentTime -= 10;
