@@ -110,4 +110,50 @@
 	    $('#video-container').draggable('enable');
 	});
 
+	/* video control shortcuts */
+
+	function toggleFullScreen(videoElement) {
+	  if (!document.fullscreenElement &&    // alternative standard method
+	      !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
+	    if (videoElement.requestFullscreen) {
+	      videoElement.requestFullscreen();
+	    } else if (videoElement.mozRequestFullScreen) {
+	      videoElement.mozRequestFullScreen();
+	    } else if (videoElement.webkitRequestFullscreen) {
+	      videoElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+	    }
+	  } else {
+	    if (document.cancelFullScreen) {
+	      document.cancelFullScreen();
+	    } else if (document.mozCancelFullScreen) {
+	      document.mozCancelFullScreen();
+	    } else if (document.webkitCancelFullScreen) {
+	      document.webkitCancelFullScreen();
+	    }
+	  }
+	}
+	
+	var listener = new window.keypress.Listener();
+	listener.simple_combo("enter", function() {
+		toggleFullScreen(video[0]);
+	});
+	listener.simple_combo("up", function() {
+		video[0].volume += 0.1;
+	});
+	listener.simple_combo("down", function() {
+		video[0].volume -= 0.1;
+	});
+	listener.simple_combo("left", function() {
+		video[0].currentTime -= 10;
+	});
+	listener.simple_combo("right", function() {
+		video[0].currentTime += 10;
+	});
+	listener.simple_combo("space", function() {
+		if(video[0].paused) {
+			video[0].play();
+		}else{
+			video[0].pause();
+		}
+	});
 })()
