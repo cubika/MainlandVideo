@@ -4,7 +4,7 @@ var http = require('http'),
 	map = {};
 
 function requestJSON(url, callback) {
-	http.request(url, function(res) {
+	var req = http.request(url, function(res) {
 		var buff = '';
 		res.on('data', function(chunk) {
 			buff += chunk;
@@ -13,7 +13,9 @@ function requestJSON(url, callback) {
 			callback(JSON.parse(buff));
 		});
 	});
+	req.end();
 }
+
 function Once(page) {
 	requestJSON('http://www.tudou.com/list/albumData.action?&sort=1&tagType=3&firstTagId=5&page=' + page, function(result) {
 		if(result.data.length == 0) {
@@ -22,9 +24,14 @@ function Once(page) {
 			return;
 		}
 		result.data.forEach(function(data) {
-			jsdom(data.playUrl, function(error, window) {
-				map[window.itemData.kw] = window.itemData.iid;
-			});
+			console.log(data.albumShortDesc);
+			
+			(function(url) {
+				console.log(url);
+				jsdom.env(url, function(error, window) {
+					map[window.itemData.kw] = window.itemData.iid;
+				});
+			})(data.playUrl);
 		});
 		Once(page++);
 	});
