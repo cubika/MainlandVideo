@@ -3,7 +3,7 @@ var jsdom = require('jsdom'),
 
 var address = require('./address.json');
 
-function parseLinks($, result) {
+function parseLinks($, type, result) {
 	var picList = $(".show-pic"),
 		next = $('.next');
 	picList.each(function(index, pic) {
@@ -14,21 +14,32 @@ function parseLinks($, result) {
 			title = img.title;
 		result[title] = plid;
 	});
+	console.log(type + " page: " + $('.color5')[0].innerHTML);
 	if(next.length) {
-		parseLinks(next[0].href, result);
+		jsdom.env(next[0].href, ["http://code.jquery.com/jquery.js"],
+			function(erros, window) {
+			parseLinks(window.$, type, result);
+		});
+	}else{
+		console.log(type + " come to end ");
+		fs.writeFile('../data/' + type + ".json", JSON.stringify(result));
 	}
 }
 
-function getContent(type, url) {
-	var result = {};
-	jsdom.env(url, ["http://code.jquery.com/jquery.js"],
-		function(errors, window) {
-		parseLinks(window.$, result);
-		fs.writeFile('../data/' + type + ".json", JSON.stringify(result));
-	});
-}
-
+/*
 for(var type in address) {
 	var url = address[type];
-	getContent(type, url);
+	(function(type, url) {
+	jsdom.env(url, ["http://code.jquery.com/jquery.js"],
+		function(errors, window) {
+			parseLinks(window.$, type, {});
+		});
+	})(type, url);
 }
+*/
+
+var type = process.argv[2];
+jsdom.env(address[type], ["http://code.jquery.com/jquery.js"],
+function(errors, window) {
+	parseLinks(window.$, type, {});
+});
