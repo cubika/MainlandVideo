@@ -24,14 +24,13 @@ function Once(page) {
 			return;
 		}
 		result.data.forEach(function(data) {
-			console.log(data.albumShortDesc);
 			
-			(function(url) {
-				console.log(url);
-				jsdom.env(url, function(error, window) {
+			jsdom.env(data.playUrl, function(error, window) {
+				console.log(data.playUrl);
+				window.onload = function() {
 					map[window.itemData.kw] = window.itemData.iid;
-				});
-			})(data.playUrl);
+				};
+			});
 		});
 		Once(page++);
 	});
